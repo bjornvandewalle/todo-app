@@ -21,27 +21,13 @@ export class TodoService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getTodoItems() {
-    this.http
-      .get<{ todos: any }>(BACKEND_URL)
-      .pipe(
-        map((todoData) => {
-          return {
-            todos: todoData.todos.map((todo) => {
-              return {
-                id: todo.id,
-                name: todo.name,
-                description: todo.description,
-                enteredOn: todo.enteredOn,
-                endtime: todo.endtime,
-                finished: todo.finished,
-              };
-            }),
-          };
-        })
-      )
-      .subscribe((transformedTodoData) => {
-        this.todoItems = transformedTodoData.todos;
-        this.todoItemsUpdated.next({ todos: [...this.todoItems] });
-      });
+    this.http.get<Todo[]>(BACKEND_URL).subscribe((todoData) => {
+      this.todoItems = todoData;
+      this.todoItemsUpdated.next({ todos: [...this.todoItems] });
+    });
+  }
+
+  getTodoUpdateListener() {
+    return this.todoItemsUpdated.asObservable();
   }
 }

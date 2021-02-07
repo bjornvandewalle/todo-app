@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +21,7 @@ import { TodoModule } from './todo/todo.module';
     MatToolbarModule,
     MatButtonModule,
     TodoModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

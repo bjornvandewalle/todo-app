@@ -3,6 +3,6 @@ export interface Todo {
   name: string;
   description: string;
   enterdOn: Date;
-  endTime: Date;
+  endtime: Date;
   finished: boolean;
 }
