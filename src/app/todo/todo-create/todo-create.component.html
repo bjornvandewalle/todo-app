@@ -1,1 +1,32 @@
-<p>todo-create works!</p>
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSaveTodo(todoForm)" #todoForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="name"
+        placeholder="Name"
+        ngModel
+        required
+        #name
+      />
+      <mat-error *ngIf="name.invalid"
+        >Please enter the name of the Todo</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        type="text"
+        name="description"
+        placeholder="description"
+        ngModel
+        required
+        #description
+      >
+      </textarea>
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">SAVE TODO</button>
+  </form>
+</mat-card>
