@@ -1,7 +1,7 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (submit)="onSaveTodo(todoForm)" #todoForm="ngForm" *ngIf="!isLoading">
-    <mat-form-field>
+    <mat-form-field appearance="legacy">
       <input
         matInput
         type="text"
@@ -15,7 +15,15 @@
         >Please enter the name of the Todo</mat-error
       >
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Priority</mat-label>
+      <mat-select required>
+        <mat-option value="High">High</mat-option>
+        <mat-option value="Medium">Medium</mat-option>
+        <mat-option value="Low">Low</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
       <textarea
         matInput
         type="text"
@@ -26,6 +34,12 @@
         #description
       >
       </textarea>
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Due Date</mat-label>
+      <input matInput [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <button mat-raised-button color="accent" type="submit">SAVE TODO</button>
   </form>

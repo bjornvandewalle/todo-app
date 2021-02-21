@@ -2,7 +2,15 @@ export interface Todo {
   id: string;
   name: string;
   description: string;
-  enterdOn: Date;
-  endtime: Date;
+  creationTime: Date;
+  dueDate: Date;
+  finishedOn: Date;
   finished: boolean;
+  PriorityLevel: Priority;
+}
+
+export enum Priority {
+  high,
+  medium,
+  low,
 }
